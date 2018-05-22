@@ -111,21 +111,10 @@ bot.dialog('showVinfinite', function (session) {
   msg.attachments([
     new builder.HeroCard(session)
       .title("PHP 1,000,000")
-     // .subtitle("Get a VISA card")
       .text("Annual Income Requirement"),
-      //.images([builder.CardImage.create(session, 'https://pbs.twimg.com/media/DdvtOT1UwAAaiJc.jpg')])
-      //.buttons([
-     //   builder.CardAction.imBack(session, "Show Visa", "VISA")
-      //]),
        new builder.HeroCard(session)
       .title("PHP 2,000; Waived on first year")
-     // .subtitle("Get a VISA card")
-      .text("Annual Fee")
-      //.images([builder.CardImage.create(session, 'https://pbs.twimg.com/media/DdvtOT1UwAAaiJc.jpg')])
-     // .buttons([
-     //   builder.CardAction.imBack(session, "Show Visa", "VISA")
-     // ])
-     ,
+      .text("Annual Fee"),
      new builder.HeroCard(session)
       .title("3.5% of Total Amount Due")
       .text("Monthly Interest Rate"),
@@ -141,13 +130,17 @@ bot.dialog('showVgold', function (session) {
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
   msg.attachments([
     new builder.HeroCard(session)
-      .title("VISA GOLD REQUIREMENTS")
-     // .subtitle("Get a VISA card")
-      .text("Check out our selection of VISA Cards")
-      .images([builder.CardImage.create(session, 'https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2018/03/27/105090813-GettyImages-832673210.530x298.jpg?v=1522123726')])
-      .buttons([
-        builder.CardAction.imBack(session, "Show Visa", "VISA")
-      ])
+      .title("PHP 8000,000")
+      .text("Annual Income Requirement"),
+       new builder.HeroCard(session)
+      .title("PHP 2,000; Waived on first year")
+      .text("Annual Fee"),
+     new builder.HeroCard(session)
+      .title("3.5% of Total Amount Due")
+      .text("Monthly Interest Rate"),
+       new builder.HeroCard(session)
+      .title("5% of the Amount")
+      .text("Cash Advance Fee")
   ]);
   session.send(msg).endDialog();
 }).triggerAction({ matches: /^VISA Gold/i })
@@ -157,13 +150,18 @@ bot.dialog('showVclassic', function (session) {
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
   msg.attachments([
     new builder.HeroCard(session)
-      .title("VISA CLASSIC REQUIREMENTS")
-     // .subtitle("Get a VISA card")
-      .text("Check out our selection of VISA Cards")
-      .images([builder.CardImage.create(session, 'https://www.telegraph.co.uk/cars/images/Spark/Peugeot/peugeot-203-classic-car.jpg?imwidth=450')])
-      .buttons([
-        builder.CardAction.imBack(session, "Show Visa", "VISA")
-      ])
+       new builder.HeroCard(session)
+      .title("PHP 1,400; Waived on first year")
+      .text("Annual Fee"),
+     new builder.HeroCard(session)
+      .title("3.5% of Total Amount Due")
+      .text("Monthly Interest Rate"),
+       new builder.HeroCard(session)
+      .title("5% of the Amount")
+      .text("Cash Advance Fee"),
+      new builder.HeroCard(session)
+      .title("5% of the Amount")
+      .text("Late Charge")
   ]);
   session.send(msg).endDialog();
 }).triggerAction({ matches: /^VISA Classic/i })
@@ -173,13 +171,17 @@ bot.dialog('showVplatinum', function (session) {
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
   msg.attachments([
     new builder.HeroCard(session)
-      .title("VISA PLATINUM REQUIREMENTS")
-     // .subtitle("Get a VISA card")
-      .text("Check out our selection of VISA Cards")
-      .images([builder.CardImage.create(session, 'https://bnsec.bluenile.com/bluenile/is/image/bluenile/-modern-comfort-fit-wedding-ring-platinum-/58196_main?$v2_phab_detailmain_lrg$')])
-      .buttons([
-        builder.CardAction.imBack(session, "Show Visa", "VISA")
-      ])
+      .title("PHP 8000,000")
+      .text("Annual Income Requirement"),
+       new builder.HeroCard(session)
+      .title("PHP 2,000; Waived on first year")
+      .text("Annual Fee"),
+     new builder.HeroCard(session)
+      .title("3.5% of Total Amount Due")
+      .text("Monthly Interest Rate"),
+       new builder.HeroCard(session)
+      .title("5% of the Amount")
+      .text("Cash Advance Fee")
   ]);
   session.send(msg).endDialog();
 }).triggerAction({ matches: /^VISA Platinum/i })
@@ -229,14 +231,15 @@ bot.dialog('showMCtitanium', function (session) {
   var msg = new builder.Message(session);
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
   msg.attachments([
-    new builder.HeroCard(session)
-      .title("MasterCard Titanium REQUIREMENTS")
-     // .subtitle("Get a VISA card")
-      .text("Check out our selection of VISA Cards")
-      .images([builder.CardImage.create(session, 'https://bnsec.bluenile.com/bluenile/is/image/bluenile/-modern-comfort-fit-wedding-ring-platinum-/58196_main?$v2_phab_detailmain_lrg$')])
-      .buttons([
-        builder.CardAction.imBack(session, "Show MasterCard", "MasterCard")
-      ])
+       new builder.HeroCard(session)
+      .title("PHP 2,000; Waived on first year")
+      .text("Annual Fee"),
+     new builder.HeroCard(session)
+      .title("3.5% of Total Amount Due")
+      .text("Monthly Interest Rate"),
+       new builder.HeroCard(session)
+      .title("5% of the Amount")
+      .text("Cash Advance Fee")
   ]);
   session.send(msg).endDialog();
 }).triggerAction({ matches: /^MasterCard Titanium/i })
@@ -246,13 +249,17 @@ bot.dialog('showMCplatinum', function (session) {
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
   msg.attachments([
     new builder.HeroCard(session)
-      .title("MasterCard Platinum REQUIREMENTS")
-     // .subtitle("Get a VISA card")
-      .text("Check out our selection of VISA Cards")
-      .images([builder.CardImage.create(session, 'https://www.moneypeach.com/wp-content/uploads/2017/10/Blank-Photos-for-Facebook.jpg')])
-      .buttons([
-        builder.CardAction.imBack(session, "Show MasterCard", "MasterCard")
-      ])
+      .title("PHP 1,200,000")
+      .text("Annual Income Requirement"),
+       new builder.HeroCard(session)
+      .title("PHP 2,000; Waived on first year")
+      .text("Annual Fee"),
+     new builder.HeroCard(session)
+      .title("3.5% of Total Amount Due")
+      .text("Monthly Interest Rate"),
+       new builder.HeroCard(session)
+      .title("5% of the Amount")
+      .text("Cash Advance Fee")
   ]);
   session.send(msg).endDialog();
 }).triggerAction({ matches: /^MasterCard Platinum/i })
@@ -261,30 +268,32 @@ bot.dialog('showMCgold', function (session) {
   var msg = new builder.Message(session);
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
   msg.attachments([
-    new builder.HeroCard(session)
-      .title("MasterCard Gold REQUIREMENTS")
-     // .subtitle("Get a VISA card")
-      .text("Check out our selection of VISA Cards")
-      .images([builder.CardImage.create(session, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzevd-j2OOS-isXmdZtFMJ4wCTy3HLMmL5CM2WrjtT1Ek5qHj-')])
-      .buttons([
-        builder.CardAction.imBack(session, "Show MasterCard", "MasterCard")
-      ])
+       new builder.HeroCard(session)
+      .title("PHP 2,000; Waived on first year")
+      .text("Annual Fee"),
+     new builder.HeroCard(session)
+      .title("3.5% of Total Amount Due")
+      .text("Monthly Interest Rate"),
+       new builder.HeroCard(session)
+      .title("5% of the Amount")
+      .text("Cash Advance Fee")
   ]);
   session.send(msg).endDialog();
 }).triggerAction({ matches: /^MasterCard Gold/i })
 
 bot.dialog('showMCclassic', function (session) {
-  var msg = new builder.Message(session);
+   var msg = new builder.Message(session);
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
   msg.attachments([
-    new builder.HeroCard(session)
-      .title("MasterCard Classic REQUIREMENTS")
-     // .subtitle("Get a VISA card")
-      .text("Check out our selection of VISA Cards")
-      .images([builder.CardImage.create(session, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG012eKu1SXdk1CZSEd40AWSVYrXQxQ_TH02x_6_ZhQDevjtkvvg')])
-      .buttons([
-        builder.CardAction.imBack(session, "Show MasterCard", "MasterCard")
-      ])
+       new builder.HeroCard(session)
+      .title("PHP 1,400; Waived on first year")
+      .text("Annual Fee"),
+     new builder.HeroCard(session)
+      .title("3.5% of Total Amount Due")
+      .text("Monthly Interest Rate"),
+       new builder.HeroCard(session)
+      .title("5% of the Amount")
+      .text("Cash Advance Fee")
   ]);
   session.send(msg).endDialog();
 }).triggerAction({ matches: /^MasterCard Classic/i })
