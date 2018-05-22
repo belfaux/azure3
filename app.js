@@ -106,13 +106,10 @@ bot.dialog('showVisa', function (session) {
 
 
 bot.dialog('showVinfinite', function (session) {
-  session.send("Hi! Thank you for your interest in VISA Infinite. Here are the requirements for the card application. " );
-  var msg = new builder.Message(session);
+var msg = new builder.Message(session);
+  builder.Prompts.text(session, 'Hi! Here are the VISA Infinite Requirements.');
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
   msg.attachments([
-    new builder.HeroCard(session)
-      .title("VISA")
-     // .subtitle("Get a VISA card")
       .text("Check out our selection of VISA Cards")
       .images([builder.CardImage.create(session, 'https://i.imgur.com/YtPmNVT.png')])
       .buttons([
