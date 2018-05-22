@@ -106,6 +106,7 @@ bot.dialog('showVisa', function (session) {
 
 
 bot.dialog('showVinfinite', function (session) {
+  session.send("Hi! Thank you for your interest in VISA Infinite. Here are the requirements for the card application. " );
   var msg = new builder.Message(session);
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
   msg.attachments([
