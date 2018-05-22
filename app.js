@@ -110,9 +110,9 @@ bot.dialog('showVinfinite', function (session) {
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
   msg.attachments([
     new builder.HeroCard(session)
-      .title("Annual Income Requirement")
+      .title("PHP 1,000,000")
      // .subtitle("Get a VISA card")
-      .text("PHP 1,000,000"),
+      .text("Annual Income Requirement"),
       //.images([builder.CardImage.create(session, 'https://pbs.twimg.com/media/DdvtOT1UwAAaiJc.jpg')])
       //.buttons([
      //   builder.CardAction.imBack(session, "Show Visa", "VISA")
