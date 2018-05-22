@@ -127,7 +127,7 @@ bot.dialog('showVinfinite', function (session) {
       ])
   ]);
   session.send(msg).endDialog();
-}).triggerAction({ matches: /^card$/i })
+}).triggerAction({ matches: /^VISA Infinite$/i })
 
 
 bot.dialog('showMaster', function (session) {
