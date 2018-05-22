@@ -107,7 +107,7 @@ bot.dialog('showVisa', function (session) {
 
 bot.dialog('showVinfinite', function (session) {
 var msg = new builder.Message(session);
-  builder.Prompts.text(session, 'Hi! Here are the VISA Infinite Requirements.');
+  //builder.Prompts.text(session, 'Hi! Here are the VISA Infinite Requirements.');
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
   msg.attachments([
       .text("Check out our selection of VISA Cards")
