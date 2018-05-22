@@ -121,6 +121,53 @@ bot.dialog('showVinfinite', function (session) {
   session.send(msg).endDialog();
 }).triggerAction({ matches: /^VISA Infinite/i })
 
+bot.dialog('showVgold', function (session) {
+  var msg = new builder.Message(session);
+  msg.attachmentLayout(builder.AttachmentLayout.carousel)
+  msg.attachments([
+    new builder.HeroCard(session)
+      .title("VISA GOLD REQUIREMENTS")
+     // .subtitle("Get a VISA card")
+      .text("Check out our selection of VISA Cards")
+      .images([builder.CardImage.create(session, 'https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2018/03/27/105090813-GettyImages-832673210.530x298.jpg?v=1522123726')])
+      .buttons([
+        builder.CardAction.imBack(session, "Show Visa", "VISA")
+      ])
+  ]);
+  session.send(msg).endDialog();
+}).triggerAction({ matches: /^VISA Gold/i })
+
+bot.dialog('showVclassic', function (session) {
+  var msg = new builder.Message(session);
+  msg.attachmentLayout(builder.AttachmentLayout.carousel)
+  msg.attachments([
+    new builder.HeroCard(session)
+      .title("VISA CLASSIC REQUIREMENTS")
+     // .subtitle("Get a VISA card")
+      .text("Check out our selection of VISA Cards")
+      .images([builder.CardImage.create(session, 'https://www.telegraph.co.uk/cars/images/Spark/Peugeot/peugeot-203-classic-car.jpg?imwidth=450')])
+      .buttons([
+        builder.CardAction.imBack(session, "Show Visa", "VISA")
+      ])
+  ]);
+  session.send(msg).endDialog();
+}).triggerAction({ matches: /^VISA Classic/i })
+
+bot.dialog('showVplatinum', function (session) {
+  var msg = new builder.Message(session);
+  msg.attachmentLayout(builder.AttachmentLayout.carousel)
+  msg.attachments([
+    new builder.HeroCard(session)
+      .title("VISA PLATINUM REQUIREMENTS")
+     // .subtitle("Get a VISA card")
+      .text("Check out our selection of VISA Cards")
+      .images([builder.CardImage.create(session, 'https://bnsec.bluenile.com/bluenile/is/image/bluenile/-modern-comfort-fit-wedding-ring-platinum-/58196_main?$v2_phab_detailmain_lrg$')])
+      .buttons([
+        builder.CardAction.imBack(session, "Show Visa", "VISA")
+      ])
+  ]);
+  session.send(msg).endDialog();
+}).triggerAction({ matches: /^VISA Platinum/i })
 
 bot.dialog('showMaster', function (session) {
   var msg = new builder.Message(session);
