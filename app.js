@@ -150,7 +150,6 @@ bot.dialog('showVclassic', function (session) {
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
   msg.attachments([
     new builder.HeroCard(session)
-       new builder.HeroCard(session)
       .title("PHP 1,400; Waived on first year")
       .text("Annual Fee"),
      new builder.HeroCard(session)
