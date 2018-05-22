@@ -106,26 +106,20 @@ bot.dialog('showVisa', function (session) {
 
 
 bot.dialog('showVinfinite', function (session) {
-var msg = new builder.Message(session);
-  //builder.Prompts.text(session, 'Hi! Here are the VISA Infinite Requirements.');
+  var msg = new builder.Message(session);
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
   msg.attachments([
+    new builder.HeroCard(session)
+      .title("VISA REQUIREMENTS")
+     // .subtitle("Get a VISA card")
       .text("Check out our selection of VISA Cards")
-      .images([builder.CardImage.create(session, 'https://i.imgur.com/YtPmNVT.png')])
+      .images([builder.CardImage.create(session, 'https://pbs.twimg.com/media/DdvtOT1UwAAaiJc.jpg')])
       .buttons([
         builder.CardAction.imBack(session, "Show Visa", "VISA")
-      ]),
-    new builder.HeroCard(session)
-      .title("MasterCard")
-      //.subtitle("Get a MasterCard")
-      .text("Check out our selection of MasterCards")
-      .images([builder.CardImage.create(session, 'https://i.imgur.com/SgihI8g.png')])
-      .buttons([
-        builder.CardAction.imBack(session, "Show MasterCard", "MasterCard")
       ])
   ]);
   session.send(msg).endDialog();
-}).triggerAction({ matches: /^VISA Infinite$/i })
+}).triggerAction({ matches: /^VISA Infinite/i })
 
 
 bot.dialog('showMaster', function (session) {
