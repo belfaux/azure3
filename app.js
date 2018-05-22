@@ -209,6 +209,71 @@ bot.dialog('showMaster', function (session) {
   session.send(msg).endDialog();
 }).triggerAction({ matches: /^Show MasterCard$/i })
 
+
+bot.dialog('showMCtitanium', function (session) {
+  var msg = new builder.Message(session);
+  msg.attachmentLayout(builder.AttachmentLayout.carousel)
+  msg.attachments([
+    new builder.HeroCard(session)
+      .title("MasterCard Titanium REQUIREMENTS")
+     // .subtitle("Get a VISA card")
+      .text("Check out our selection of VISA Cards")
+      .images([builder.CardImage.create(session, 'https://bnsec.bluenile.com/bluenile/is/image/bluenile/-modern-comfort-fit-wedding-ring-platinum-/58196_main?$v2_phab_detailmain_lrg$')])
+      .buttons([
+        builder.CardAction.imBack(session, "Show MasterCard", "MasterCard")
+      ])
+  ]);
+  session.send(msg).endDialog();
+}).triggerAction({ matches: /^MasterCard Titanium/i })
+
+bot.dialog('showMCplatinum', function (session) {
+  var msg = new builder.Message(session);
+  msg.attachmentLayout(builder.AttachmentLayout.carousel)
+  msg.attachments([
+    new builder.HeroCard(session)
+      .title("MasterCard Platinum REQUIREMENTS")
+     // .subtitle("Get a VISA card")
+      .text("Check out our selection of VISA Cards")
+      .images([builder.CardImage.create(session, 'https://www.moneypeach.com/wp-content/uploads/2017/10/Blank-Photos-for-Facebook.jpg')])
+      .buttons([
+        builder.CardAction.imBack(session, "Show MasterCard", "MasterCard")
+      ])
+  ]);
+  session.send(msg).endDialog();
+}).triggerAction({ matches: /^MasterCard Platinum/i })
+
+bot.dialog('showMCgold', function (session) {
+  var msg = new builder.Message(session);
+  msg.attachmentLayout(builder.AttachmentLayout.carousel)
+  msg.attachments([
+    new builder.HeroCard(session)
+      .title("MasterCard Gold REQUIREMENTS")
+     // .subtitle("Get a VISA card")
+      .text("Check out our selection of VISA Cards")
+      .images([builder.CardImage.create(session, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzevd-j2OOS-isXmdZtFMJ4wCTy3HLMmL5CM2WrjtT1Ek5qHj-')])
+      .buttons([
+        builder.CardAction.imBack(session, "Show MasterCard", "MasterCard")
+      ])
+  ]);
+  session.send(msg).endDialog();
+}).triggerAction({ matches: /^MasterCard Gold/i })
+
+bot.dialog('showMCclassic', function (session) {
+  var msg = new builder.Message(session);
+  msg.attachmentLayout(builder.AttachmentLayout.carousel)
+  msg.attachments([
+    new builder.HeroCard(session)
+      .title("MasterCard Classic REQUIREMENTS")
+     // .subtitle("Get a VISA card")
+      .text("Check out our selection of VISA Cards")
+      .images([builder.CardImage.create(session, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG012eKu1SXdk1CZSEd40AWSVYrXQxQ_TH02x_6_ZhQDevjtkvvg')])
+      .buttons([
+        builder.CardAction.imBack(session, "Show MasterCard", "MasterCard")
+      ])
+  ]);
+  session.send(msg).endDialog();
+}).triggerAction({ matches: /^MasterCard Classic/i })
+
 bot.dialog('testprompt', function (session) {
   var msg = new builder.Message(session)
     .text("Thank you for expressing interest in our premium golf shirt! What color of shirt would you like?")
