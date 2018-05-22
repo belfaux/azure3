@@ -118,13 +118,20 @@ bot.dialog('showVinfinite', function (session) {
      //   builder.CardAction.imBack(session, "Show Visa", "VISA")
       //]),
        new builder.HeroCard(session)
-      .title("Annual Fee")
+      .title("PHP 2,000; Waived on first year")
      // .subtitle("Get a VISA card")
-      .text("PHP 2,000; Waived on first year")
+      .text("Annual Fee")
       //.images([builder.CardImage.create(session, 'https://pbs.twimg.com/media/DdvtOT1UwAAaiJc.jpg')])
      // .buttons([
      //   builder.CardAction.imBack(session, "Show Visa", "VISA")
      // ])
+     ,
+     new builder.HeroCard(session)
+      .title("3.5% of Total Amount Due")
+      .text("Monthly Interest Rate"),
+       new builder.HeroCard(session)
+      .title("1 point for every PHP 30 spent")
+      .text("Rewards")
   ]);
   session.send(msg).endDialog();
 }).triggerAction({ matches: /^VISA Infinite/i })
