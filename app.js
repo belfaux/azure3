@@ -36,10 +36,11 @@ var inMemoryStorage = new builder.MemoryBotStorage();
 
 // Create your bot with a function to receive messages from the user
 // Create bot and default message handler
-var bot = new builder.UniversalBot(connector, function (session) {
-  //session.send("Good morning.");
+var bot = new builder.UniversalBot(connector)
+                .set('storage', inMemoryStorage); 
+                {
   session.send("Hi! Would you like to look at Visa or MasterCard offerings? Type in 'card'. " );
-});
+                }
 
 // Add dialog to return list of shirts available
 bot.dialog('showCards', function (session) {
@@ -296,7 +297,7 @@ bot.dialog('showMCclassic', function (session) {
       .title("5% of the Amount")
       .text("Cash Advance Fee")
   ]);
-  session.send(msg)
+  session.send(msg);    
 },
 function (session, results) {
     var msg = new builder.Message(session)
