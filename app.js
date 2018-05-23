@@ -1,4 +1,4 @@
-  /*-----------------------------------------------------------------------------
+/*-----------------------------------------------------------------------------
 A simple echo bot for the Microsoft Bot Framework. 
 -----------------------------------------------------------------------------*/
 
@@ -294,11 +294,8 @@ bot.dialog('showMCclassic', function (session) {
       .title("5% of the Amount")
       .text("Cash Advance Fee")
   ]);
- // session.send(msg).endDialog();
-},
-function (session) {
-        builder.Prompts.text(session, 'Hi! Would you like to apply for MasterCard Classic Card?');
-    }
+  session.send(msg).endDialog();
+}
 ).triggerAction({ matches: /^MasterCard Classic/i })
 
 
