@@ -296,18 +296,15 @@ bot.dialog('showMCclassic', function (session) {
   ]
   
   );
-   var msg2 = new builder2.Message(session2)
-     .text("Thank you for expressing interest in our premium golf shirt! What color of shirt would you like?")
-    .suggestedActions(
-        builder.SuggestedActions.create(
-                session, [
-                    builder.CardAction.imBack(session, "productId=1&color=green", "Green"),
-                    builder.CardAction.imBack(session, "productId=1&color=blue", "Blue"),
-                    builder.CardAction.imBack(session, "productId=1&color=red", "Red")
-                ]
-            ));
   session.send(msg).endDialog();
-}).triggerAction({ matches: /^MasterCard Classic/i })
+},
+function (session) {
+        builder.Prompts.text(session, 'Hi! Would you like to apply for MasterCard Classic Card?');
+    },
+).triggerAction({ matches: /^MasterCard Classic/i })
+
+
+
 
 bot.dialog('testprompt', function (session) {
   var msg = new builder.Message(session)
