@@ -1,4 +1,4 @@
-/*-----------------------------------------------------------------------------
+  /*-----------------------------------------------------------------------------
 A simple echo bot for the Microsoft Bot Framework. 
 -----------------------------------------------------------------------------*/
 
@@ -300,7 +300,7 @@ bot.dialog('showMCclassic', function (session) {
 },
 function (session) {
         builder.Prompts.text(session, 'Hi! Would you like to apply for MasterCard Classic Card?');
-    },
+    }
 ).triggerAction({ matches: /^MasterCard Classic/i })
 
 
