@@ -36,26 +36,12 @@ var inMemoryStorage = new builder.MemoryBotStorage();
 
 // Create your bot with a function to receive messages from the user
 // Create bot and default message handler
-var bot = new builder.UniversalBot(connector)
-                .set('storage', inMemoryStorage); 
-                
+var bot = new builder.UniversalBot(connector, function (session) {
+  //session.send("Good morning.");
+  session.send("Hi! Would you like to look at Visa or MasterCard offerings? Type in 'card'. " );
+});
 
 // Add dialog to return list of shirts available
-
-bot.dialog('testprompt', function (session) {
-  var msg = new builder.Message(session)
-    .text("Welcome!?")
-    .suggestedActions(
-        builder.SuggestedActions.create(
-                session, [
-                    builder.CardAction.imBack(session, "card", "card"),
-                    builder.CardAction.imBack(session, "VISA", "VISA"),
-                    builder.CardAction.imBack(session, "MasterCard", "MasterCard")
-                ]
-            ));
-session.send(msg);
-}).triggerAction({ matches: /^hello/i })
-
 bot.dialog('showCards', function (session) {
   var msg = new builder.Message(session);
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
@@ -310,7 +296,7 @@ bot.dialog('showMCclassic', function (session) {
       .title("5% of the Amount")
       .text("Cash Advance Fee")
   ]);
-  session.send(msg);    
+  session.send(msg)
 },
 function (session, results) {
     var msg = new builder.Message(session)
