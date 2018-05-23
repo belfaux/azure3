@@ -38,11 +38,24 @@ var inMemoryStorage = new builder.MemoryBotStorage();
 // Create bot and default message handler
 var bot = new builder.UniversalBot(connector)
                 .set('storage', inMemoryStorage); 
-                {
-  session.send("Hi! Would you like to look at Visa or MasterCard offerings? Type in 'card'. " );
-                }
+                
 
 // Add dialog to return list of shirts available
+
+bot.dialog('testprompt', function (session) {
+  var msg = new builder.Message(session)
+    .text("Welcome!?")
+    .suggestedActions(
+        builder.SuggestedActions.create(
+                session, [
+                    builder.CardAction.imBack(session, "card", "card"),
+                    builder.CardAction.imBack(session, "VISA", "VISA"),
+                    builder.CardAction.imBack(session, "MasterCard", "MasterCard")
+                ]
+            ));
+session.send(msg);
+}).triggerAction({ matches: /^hello/i })
+
 bot.dialog('showCards', function (session) {
   var msg = new builder.Message(session);
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
