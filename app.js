@@ -66,6 +66,21 @@ bot.dialog('showCards', function (session) {
   session.send(msg).endDialog();
 }).triggerAction({ matches: /^card$/i })
 
+bot.dialog('menu', function (session) {
+  var msg = new builder.Message(session)
+    .text("Welcome! What would you like to explore.")
+    .suggestedActions(
+        builder.SuggestedActions.create(
+                session, [
+                    builder.CardAction.imBack(session, "card", "Cards"),
+                    builder.CardAction.imBack(session, "VISA", "VISA"),
+                    builder.CardAction.imBack(session, "MasterCard", "MasterCard")
+                ]
+            ));
+session.send(msg);
+}).triggerAction({ matches: /^start$/i })
+
+
 bot.dialog('showVisa', function (session) {
   var msg = new builder.Message(session);
   msg.attachmentLayout(builder.AttachmentLayout.carousel)
