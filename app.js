@@ -52,7 +52,7 @@ bot.dialog('showCards', function (session) {
       .text("Check out our selection of VISA Cards")
       .images([builder.CardImage.create(session, 'https://i.imgur.com/YtPmNVT.png')])
       .buttons([
-        builder.CardAction.imBack(session, "Show Visa", "VISA")
+        builder.CardAction.imBack(session, "Show VISA", "VISA")
       ]),
     new builder.HeroCard(session)
       .title("MasterCard")
