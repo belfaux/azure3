@@ -422,6 +422,8 @@ bot.dialog('buyButtonClick', [
   }
 ]).triggerAction({ matches: /(buy|add)\s.*shirt/i });
 
+bot.recognizer(new builder.RegExpRecognizer( "CancelIntent", { en_us: /^(cancel|nevermind)/i, ja_jp: /^(キャンセル)/ }));
+
 bot.dialog('CancelDialog', function (session) {
     session.endConversation("Ok, I'm canceling your order.");
 }).triggerAction({ matches: 'CancelIntent' });
