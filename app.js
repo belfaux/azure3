@@ -452,3 +452,33 @@ bot.endConversationAction('goodbyeAction', "Ok... See you later.", { matches: 'G
 bot.dialog('CancelDialog', function (session) {
     session.endConversation("Ok, I'm canceling your order.");
 }).triggerAction({ matches: 'CancelIntent' });
+
+bot.dialog('/', [
+    function (session) {
+        builder.Prompts.text(session, "Hi! In order to process your application we need to get your info. First what is your first name?");
+    },
+    function (session, results) {
+        session.userData.first = results.response;
+        builder.Prompts.text(session, "Hi " + results.response + ". What is your middle name?"); 
+    },
+    function (session, results) {
+        session.userData.middle = results.response;
+        builder.Prompts.text(session, "What is your last name?"); 
+    },
+     function (session, results) {
+        session.userData.last = results.response;
+        builder.Prompts.text(session, "What is your address?"); 
+    },
+    function (session, results) {
+        session.userData.address = results.response;
+        builder.Prompts.text(session, "What is your mobile number?"); 
+    },
+    function (session, results) {
+        session.userData.mobile = results.response;
+        session.send("Here are the details you have submitted:  " + session.userData.first + " " + session.userData.middle + " " + session.userData.last + ", address at " +
+                       session.userData.address + ", and mobile number "
+                   + session.userData.mobile + 
+                    ".");
+    }
+    
+]).triggerAction({ matches: /^input/i });
