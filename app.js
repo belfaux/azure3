@@ -38,7 +38,7 @@ var inMemoryStorage = new builder.MemoryBotStorage();
 // Create bot and default message handler
 var bot = new builder.UniversalBot(connector, function (session) {
   //session.send("Good morning.");
-  session.send("Hi! Would you like to look at Visa or MasterCard offerings? Type in 'card'. " );
+  session.send("Hi! Welcome. Type in 'start' to begin. " );
 });
 
 // Add dialog to return list of shirts available
