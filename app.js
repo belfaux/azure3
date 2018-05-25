@@ -422,7 +422,31 @@ bot.dialog('buyButtonClick', [
   }
 ]).triggerAction({ matches: /(buy|add)\s.*shirt/i });
 
-bot.recognizer(new builder.RegExpRecognizer( "CancelIntent", { en_us: /^(cancel|nevermind)/i, ja_jp: /^(キャンセル)/ }));
+bot.recognizer({
+  recognize: function (context, done) {
+  var intent = { score: 0.0 };
+
+        if (context.message.text) {
+            switch (context.message.text.toLowerCase()) {
+                case 'help':
+                    intent = { score: 1.0, intent: 'Help' };
+                    break;
+                case 'goodbye':
+                    intent = { score: 1.0, intent: 'Goodbye' };
+                    break;
+            }
+        }
+        done(null, intent);
+    }
+});
+// Add a help dialog with a trigger action that is bound to the 'Help' intent
+bot.dialog('helpDialog', function (session) {
+    session.endDialog("This bot will echo back anything you say. Say 'goodbye' to quit.");
+}).triggerAction({ matches: 'Help' });
+
+
+// Add a global endConversation() action that is bound to the 'Goodbye' intent
+bot.endConversationAction('goodbyeAction', "Ok... See you later.", { matches: 'Goodbye' });
 
 bot.dialog('CancelDialog', function (session) {
     session.endConversation("Ok, I'm canceling your order.");
