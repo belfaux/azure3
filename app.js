@@ -453,7 +453,7 @@ bot.dialog('CancelDialog', function (session) {
     session.endConversation("Ok, I'm canceling your order.");
 }).triggerAction({ matches: 'CancelIntent' });
 
-bot.dialog('/', [
+bot.dialog('inputtest', [
     function (session) {
         builder.Prompts.text(session, "Hi! In order to process your application we need to get your info. First what is your first name?");
     },
