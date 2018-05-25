@@ -69,13 +69,15 @@ bot.dialog('showCards', function (session) {
 
 bot.dialog('menu', function (session) {
   var msg = new builder.Message(session)
-    .text("Welcome! What would you like to explore.")
+    .text("Welcome! What would you like to explore. Type 'start' to go back to this.")
     .suggestedActions(
         builder.SuggestedActions.create(
                 session, [
-                    builder.CardAction.imBack(session, "card", "Cards"),
-                    builder.CardAction.imBack(session, "VISA", "VISA"),
-                    builder.CardAction.imBack(session, "MasterCard", "MasterCard")
+                    builder.CardAction.imBack(session, "card", "Test Cards"),
+                    builder.CardAction.imBack(session, "Show VISA", "Check Visa"),
+                    builder.CardAction.imBack(session, "Show MasterCard", "Check MasterCard"),
+                    builder.CardAction.imBack(session, "input", "Test Input"),
+                    builder.CardAction.imBack(session, "testprompts", "Test Prompts")
                 ]
             ));
 session.send(msg);
@@ -442,7 +444,7 @@ bot.recognizer({
 });
 // Add a help dialog with a trigger action that is bound to the 'Help' intent
 bot.dialog('helpDialog', function (session) {
-    session.endDialog("This bot will echo back anything you say. Say 'goodbye' to quit.");
+    session.endDialog("To go back to the menu. Type in 'start'. Say 'goodbye' to quit.");
 }).triggerAction({ matches: 'Help' });
 
 
