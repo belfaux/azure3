@@ -73,8 +73,8 @@ bot.dialog('menu', function (session) {
         builder.SuggestedActions.create(
                 session, [
                     builder.CardAction.imBack(session, "card", "Cards"),
-                    builder.CardAction.imBack(session, "VISA", "VISA"),
-                    builder.CardAction.imBack(session, "MasterCard", "MasterCard")
+                    builder.CardAction.imBack(session, "Show VISA", "VISA"),
+                    builder.CardAction.imBack(session, "Show MasterCard", "MasterCard")
                 ]
             ));
 session.send(msg);
