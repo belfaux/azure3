@@ -1,6 +1,7 @@
 /*-----------------------------------------------------------------------------
 Test Bot Discovery with the Microsoft Bot Framework. 
 -----------------------------------------------------------------------------*/
+////NEW TEST
 
 var restify = require('restify');
 var builder = require('botbuilder');
