@@ -52,7 +52,7 @@ bot.dialog('showCards', function (session) {
       .text("Check out our selection of VISA Cards")
       .images([builder.CardImage.create(session, 'https://i.imgur.com/YtPmNVT.png')])
       .buttons([
-        builder.CardAction.imBack(session, "Show VISA", "VISA")
+        builder.CardAction.imBack(session, "Show Visa", "VISA")
       ]),
     new builder.HeroCard(session)
       .title("MasterCard")
@@ -73,8 +73,8 @@ bot.dialog('menu', function (session) {
         builder.SuggestedActions.create(
                 session, [
                     builder.CardAction.imBack(session, "card", "Cards"),
-                    builder.CardAction.imBack(session, "Show VISA", "VISA"),
-                    builder.CardAction.imBack(session, "Show MasterCard", "MasterCard")
+                    builder.CardAction.imBack(session, "VISA", "VISA"),
+                    builder.CardAction.imBack(session, "MasterCard", "MasterCard")
                 ]
             ));
 session.send(msg);
@@ -421,3 +421,7 @@ bot.dialog('buyButtonClick', [
     session.send("A '%(size)s %(product)s' has been added to your cart.", item).endDialog();
   }
 ]).triggerAction({ matches: /(buy|add)\s.*shirt/i });
+
+bot.dialog('CancelDialog', function (session) {
+    session.endConversation("Ok, I'm canceling your order.");
+}).triggerAction({ matches: 'CancelIntent' });
