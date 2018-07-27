@@ -51,7 +51,7 @@ var cosmosStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, do
 var bot = new builder.UniversalBot(connector, function (session) {
   //session.send("Good morning.");
   session.send("Hi! Welcome. Type in 'start' to begin. " );
-});
+}).set('storage', cosmosStorage);
 
 // Add dialog to return list of shirts available
 bot.dialog('showCards', function (session) {
