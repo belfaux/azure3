@@ -29,11 +29,22 @@ server.post('/api/messages', connector.listen());
 * For samples and documentation, see: https://github.com/Microsoft/BotBuilder-Azure
 * ---------------------------------------------------------------------------------------- */
 
+/*
 var tableName = 'botdata';
 var azureTableClient = new botbuilder_azure.AzureTableClient(tableName, process.env['AzureWebJobsStorage']);
 var tableStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, azureTableClient);
 var inMemoryStorage = new builder.MemoryBotStorage();
+*/
 
+var documentDbOptions = {
+    host: 'https://noedjs.documents.azure.com:443/', // Host for local DocDb emulator
+    masterKey: 'tMSt4EQLlJaCQpVnctFWPgQJjmdZz7vEVMdxy8hhSobuGY8oPsgsg0wKAv17lwWES6J0PN0SKqG4fD8jRLttzA==', // Fixed key for local DocDb emulator
+    database: 'standard',
+    collection: 'chartered'
+};
+
+var docDbClient = new botbuilder_azure.DocumentDbClient(documentDbOptions);
+var cosmosStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, docDbClient);
  
 // Create your bot with a function to receive messages from the user
 // Create bot and default message handler
