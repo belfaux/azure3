@@ -84,6 +84,7 @@ bot.dialog('menu', function (session) {
     .suggestedActions(
         builder.SuggestedActions.create(
                 session, [
+                    builder.CardAction.imBack(session, "Disputes", "Disputes"),
                     builder.CardAction.imBack(session, "card", "Test Cards"),
                     builder.CardAction.imBack(session, "Show VISA", "Check Visa"),
                     builder.CardAction.imBack(session, "Show MasterCard", "Check MasterCard"),
@@ -134,6 +135,20 @@ bot.dialog('showVisa', function (session) {
   ]);
   session.send(msg).endDialog();
 }).triggerAction({ matches: /^Show VISA$/i })
+
+bot.dialog('showDisputes', function (session) {
+  var msg = new builder.Message(session);
+  msg.attachmentLayout(builder.AttachmentLayout.carousel)
+  msg.attachments([
+    new builder.HeroCard(session)
+      .title("Dispute Filing")
+      .text("File Disputes Here")
+       .buttons([
+          builder.CardAction.imBack(session, "https://forms.office.com/Pages/ResponsePage.aspx?id=delLAT-aYUGH2eYg5KFU-rNOBE3YU0tAu0Syq0AlTaRUQUdJRDBTMERHWDhGSDhJTVVFSkZKV1hYTS4u", "https://forms.office.com/Pages/ResponsePage.aspx?id=delLAT-aYUGH2eYg5KFU-rNOBE3YU0tAu0Syq0AlTaRUQUdJRDBTMERHWDhGSDhJTVVFSkZKV1hYTS4u")
+        ])
+  ]);
+  session.send(msg).endDialog();
+}).triggerAction({ matches: /^Disputes/i })
 
 
 bot.dialog('showVinfinite', function (session) {
