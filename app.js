@@ -50,7 +50,7 @@ var cosmosStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, do
 // Create bot and default message handler
 var bot = new builder.UniversalBot(connector, function (session) {
   //session.send("Good morning.");
-  session.send("Hi! Welcome. Type in 'start' to begin. " );
+  //session.send("Hi! Welcome. Type in 'start' to begin. " );
 }).set('storage', cosmosStorage);
 
 
@@ -60,7 +60,7 @@ bot.on('conversationUpdate', function (message) {
             if (identity.id === message.address.bot.id) {
                 bot.send(new builder.Message()
                     .address(message.address)
-                    .text("Hello!  I'm a bot."));
+                    .text("Hello!  Type 'start' to begin."));
             }
         });
     }
