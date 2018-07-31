@@ -144,7 +144,7 @@ bot.dialog('showDisputes', function (session) {
       .title("Dispute Filing")
       .text("File Disputes Here")
        .buttons([
-          builder.CardAction.imBack(session, "https://forms.office.com/Pages/ResponsePage.aspx?id=delLAT-aYUGH2eYg5KFU-rNOBE3YU0tAu0Syq0AlTaRUQUdJRDBTMERHWDhGSDhJTVVFSkZKV1hYTS4u", "https://forms.office.com/Pages/ResponsePage.aspx?id=delLAT-aYUGH2eYg5KFU-rNOBE3YU0tAu0Syq0AlTaRUQUdJRDBTMERHWDhGSDhJTVVFSkZKV1hYTS4u")
+          builder.CardAction.openUrl(session, "https://forms.office.com/Pages/ResponsePage.aspx?id=delLAT-aYUGH2eYg5KFU-rNOBE3YU0tAu0Syq0AlTaRUQUdJRDBTMERHWDhGSDhJTVVFSkZKV1hYTS4u", "https://forms.office.com/Pages/ResponsePage.aspx?id=delLAT-aYUGH2eYg5KFU-rNOBE3YU0tAu0Syq0AlTaRUQUdJRDBTMERHWDhGSDhJTVVFSkZKV1hYTS4u")
         ])
   ]);
   session.send(msg).endDialog();
