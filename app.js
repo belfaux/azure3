@@ -6,7 +6,6 @@ Test Bot Discovery with the Microsoft Bot Framework.
 var restify = require('restify');
 var builder = require('botbuilder');
 var botbuilder_azure = require("botbuilder-azure");
-const {imageprompt} = require("botbuilder-dialogs");
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -543,7 +542,7 @@ bot.dialog('inputtest', [
 
 bot.dialog('photos', [
     function (session) {
-       builder.Prompts.text(session, "Hi! In order to process your application we need to get your info. First what is your first name?");
+        builder.Prompts.text(session, "Hi! In order to process your application we need to get your info. First what is your first name?");
     },
     function (session, results) {
         session.userData.image = results.response;
