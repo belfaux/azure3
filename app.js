@@ -546,6 +546,6 @@ bot.dialog('photos', [
     },
     function (session, results) {
         session.userData.image = results.response;
-        builder.Prompts.text(session, "Hi " + results.response); 
+      //  builder.Prompts.text(session, "Hi " + results.response); 
     }
 ]).triggerAction({ matches: /^photos/i });
