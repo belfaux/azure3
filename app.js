@@ -49,9 +49,38 @@ var cosmosStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, do
 // Create your bot with a function to receive messages from the user
 // Create bot and default message handler
 var bot = new builder.UniversalBot(connector, function (session) {
-  //session.send("Good morning.");
-//  session.send("Hi! Welcome. Type in 'start' to begin. " );
+   var msg = session.message;
+    if (msg.attachments && msg.attachments.length > 0) {
+     // Echo back attachment
+     var attachment = msg.attachments[0];
+        session.send({
+            text: "You sent:",
+            attachments: [
+                {
+                    contentType: attachment.contentType,
+                    contentUrl: attachment.contentUrl,
+                    name: attachment.name
+                }
+            ]
+        });
+    } else {
+        // Echo back users text
+        session.send("You said: %s", session.message.text);
+    }
 }).set('storage', cosmosStorage);
+
+
+bot.on('conversationUpdate', function (message) {
+    if (message.membersAdded) {
+        message.membersAdded.forEach(function (identity) {
+            if (identity.id === message.address.bot.id) {
+                bot.send(new builder.Message()
+                    .address(message.address)
+                    .text("Hello!  Type 'start' to begin."));
+            }
+        });
+    }
+});
 
 // Add dialog to return list of shirts available
 bot.dialog('showCards', function (session) {
@@ -84,6 +113,7 @@ bot.dialog('menu', function (session) {
     .suggestedActions(
         builder.SuggestedActions.create(
                 session, [
+                    builder.CardAction.imBack(session, "Disputes", "Disputes"),
                     builder.CardAction.imBack(session, "card", "Test Cards"),
                     builder.CardAction.imBack(session, "Show VISA", "Check Visa"),
                     builder.CardAction.imBack(session, "Show MasterCard", "Check MasterCard"),
@@ -134,6 +164,20 @@ bot.dialog('showVisa', function (session) {
   ]);
   session.send(msg).endDialog();
 }).triggerAction({ matches: /^Show VISA$/i })
+
+bot.dialog('showDisputes', function (session) {
+  var msg = new builder.Message(session);
+  msg.attachmentLayout(builder.AttachmentLayout.carousel)
+  msg.attachments([
+    new builder.HeroCard(session)
+      .title("Dispute Filing")
+      .text("File Disputes Here")
+       .buttons([
+          builder.CardAction.openUrl(session, "https://forms.office.com/Pages/ResponsePage.aspx?id=delLAT-aYUGH2eYg5KFU-rNOBE3YU0tAu0Syq0AlTaRUQUdJRDBTMERHWDhGSDhJTVVFSkZKV1hYTS4u", "Open Dispute Filing Form")
+        ])
+  ]);
+  session.send(msg).endDialog();
+}).triggerAction({ matches: /^Disputes/i })
 
 
 bot.dialog('showVinfinite', function (session) {
@@ -386,31 +430,9 @@ bot.dialog('testprompt', function (session) {
                 ]
             ));
 session.send(msg);
-}).triggerAction({ matches: /^testprompts$/i })
+}).triggerAction({ matches: /^testprompt$/i })
 
-bot.dialog('image', function (session) {
-  session.send("Hello, send image");
-},
- function (session){
-  var msg = session.message;
-    if (msg.attachments && msg.attachments.length > 0) {
-     // Echo back attachment
-     var attachment = msg.attachments[0];
-        session.send({
-            text: "You sent:",
-            attachments: [
-                {
-                    contentType: attachment.contentType,
-                    contentUrl: attachment.contentUrl,
-                    name: attachment.name
-                }
-            ]
-        });
-    } else {
-        // Echo back users text
-        session.send("You said: %s", session.message.text);
-    }
-}).triggerAction({ matches: /^image$/i })
+
 
 
 // Add dialog to handle 'Buy' button click
@@ -514,6 +536,27 @@ bot.dialog('inputtest', [
                        session.userData.address + ", and mobile number "
                    + session.userData.mobile + 
                     ".");
+      session.send("send image");
+    },
+  function (session, results) {
+    session.userData.image = results.response;
+    if (session.userData.image && msg.attachments.length > 0) {
+     // Echo back attachment
+     var attachment = msg.attachments[0];
+        session.send({
+            text: "You sent:",
+            attachments: [
+                {
+                    contentType: attachment.contentType,
+                    contentUrl: attachment.contentUrl,
+                    name: attachment.name
+                }
+            ]
+        });
+    } else {
+        // Echo back users text
+        session.send("You said: %s", session.message.text);
     }
+}
     
 ]).triggerAction({ matches: /^input/i });
