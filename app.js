@@ -536,8 +536,14 @@ bot.dialog('inputtest', [
                        session.userData.address + ", and mobile number "
                    + session.userData.mobile + 
                     ".");
-      session.send("send image");
+   //  session.send("send image");
     },
+  function (session)
+  {
+    session.send("Thank you for submitting your details. To proceed, type in 'photos', or type in 'start');
+  }
+  
+  /*,
   function (session, results) {
     session.userData.image = results.response;
     if (session.userData.image && msg.attachments.length > 0) {
@@ -558,5 +564,30 @@ bot.dialog('inputtest', [
         session.send("You said: %s", session.message.text);
     }
 }
+*/
     
 ]).triggerAction({ matches: /^input/i });
+
+    bot.dialog('photos', function (session) {  
+    builder.Prompts.text(session, "Hi! In order to continue processing your application we need to get your ID. Please send it now.");
+    },
+    function (session, results) {
+        var session.userData.img = results.response;
+         if ( session.userData.img &&  session.userData.img > 0) {
+     // Echo back attachment
+     var attachment =  session.userData.img.attachments[0];
+        session.send({
+            text: "You sent:",
+            attachments: [
+                {
+                    contentType: attachment.contentType,
+                    contentUrl: attachment.contentUrl,
+                    name: attachment.name
+                }
+            ]
+        });
+    } else {
+        // Echo back users text
+        session.send("You said: %s", session.message.text);
+    },
+}).triggerAction({ matches: /^photos$/i })
