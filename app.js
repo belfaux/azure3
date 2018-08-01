@@ -386,9 +386,12 @@ bot.dialog('testprompt', function (session) {
                 ]
             ));
 session.send(msg);
-}).triggerAction({ matches: /^testprompt$/i })
+}).triggerAction({ matches: /^testprompts$/i })
 
 bot.dialog('image', function (session) {
+  session.send("Hello, send image");
+},
+ function (session){
   var msg = session.message;
     if (msg.attachments && msg.attachments.length > 0) {
      // Echo back attachment
