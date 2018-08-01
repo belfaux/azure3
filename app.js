@@ -52,6 +52,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
    var msg = session.message;
     if (msg.attachments && msg.attachments.length > 0) {
      // Echo back attachment
+     session.userdata.img= msg;
      var attachment = msg.attachments[0];
         session.send({
             text: "You sent:",
