@@ -542,10 +542,11 @@ bot.dialog('inputtest', [
 
 bot.dialog('photos', [
     function (session) {
-        builder.Prompts.text(session, "Hi! In order to process your application we need to get your info. First what is your first name?");
+       builder.Prompts.attachment(session, "Upload a picture for me to test.");
+);
     },
     function (session, results) {
         session.userData.image = results.response;
-        builder.Prompts.text(session, "Hi " + results.response); 
+      //  builder.Prompts.text(session, "Hi " + results.response); 
     }
 ]).triggerAction({ matches: /^photos/i });
