@@ -536,27 +536,16 @@ bot.dialog('inputtest', [
                        session.userData.address + ", and mobile number "
                    + session.userData.mobile + 
                     ".");
-      session.send("send image");
-    },
-  function (session, results) {
-    session.userData.image = results.response;
-    if (session.userData.image && msg.attachments.length > 0) {
-     // Echo back attachment
-     var attachment = msg.attachments[0];
-        session.send({
-            text: "You sent:",
-            attachments: [
-                {
-                    contentType: attachment.contentType,
-                    contentUrl: attachment.contentUrl,
-                    name: attachment.name
-                }
-            ]
-        });
-    } else {
-        // Echo back users text
-        session.send("You said: %s", session.message.text);
+      session.send("Thank u. Type 'photos' or 'start' to go back.");
     }
-}
-    
 ]).triggerAction({ matches: /^input/i });
+
+bot.dialog('photos', [
+    function (session) {
+        builder.Prompts.text(session, "Hi! In order to process your application we need to get your info. First what is your first name?");
+    },
+    function (session, results) {
+        session.userData.first = results.response;
+        builder.Prompts.text(session, "Hi " + results.response + ". What is your middle name?"); 
+    }
+]).triggerAction({ matches: /^photos/i });
