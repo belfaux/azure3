@@ -522,6 +522,7 @@ bot.dialog('inputtest', [
                     ".");
     },
   function (session) {
+    session.send("send an image attachment");
     var msg = session.message;
     if (msg.attachments && msg.attachments.length > 0) {
      // Echo back attachment
