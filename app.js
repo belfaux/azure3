@@ -548,7 +548,7 @@ bot.dialog('photos', [
     },
     function (session, results) {
         session.userData.image = results.response;
-          session.send({
+         /* session.send({
             text: "You sent:",
             attachments: [
                 {
@@ -559,5 +559,7 @@ bot.dialog('photos', [
             ]
         });
       //  builder.Prompts.text(session, "Hi " + results.response); 
+      
     }
+    */
 ]).triggerAction({ matches: /^photos/i });
