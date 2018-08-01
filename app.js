@@ -545,7 +545,7 @@ bot.dialog('photos', [
         builder.Prompts.text(session, "Hi! In order to process your application we need to get your info. First what is your first name?");
     },
     function (session, results) {
-        session.userData.first = results.response;
-        builder.Prompts.text(session, "Hi " + results.response + ". What is your middle name?"); 
+        session.userData.image = results.response;
+        builder.Prompts.text(session, "Hi " + results.response); 
     }
 ]).triggerAction({ matches: /^photos/i });
