@@ -520,10 +520,11 @@ bot.dialog('inputtest', [
                        session.userData.address + ", and mobile number "
                    + session.userData.mobile + 
                     ".");
+      session.send("send image")
     },
-  function (session) {
-    session.send("send an image attachment");
-    var msg = session.message;
+  function (session, results) {
+    session.userData.image = results.response;
+    var msg = session.userData.image;
     if (msg.attachments && msg.attachments.length > 0) {
      // Echo back attachment
      var attachment = msg.attachments[0];
