@@ -568,11 +568,11 @@ bot.dialog('inputtest', [
     
 ]).triggerAction({ matches: /^input/i });
 
-    bot.dialog('photos', function (session) {  
+bot.dialog('photos', function (session) {  
     builder.Prompts.text(session, "Hi! In order to continue processing your application we need to get your ID. Please send it now.");
     },
     function (session, results) {
-        var session.userData.img = results.response;
+         session.userData.img = results.response;
          if ( session.userData.img &&  session.userData.img > 0) {
      // Echo back attachment
      var attachment =  session.userData.img.attachments[0];
