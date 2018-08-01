@@ -544,7 +544,6 @@ bot.dialog('inputtest', [
 bot.dialog('photos', [
     function (session) {
        builder.Prompts.text(session, "Hi! In order to process your application we need to get your info. First what is your first name?");
-);
     },
     function (session, results) {
         session.userData.image = results.response;
