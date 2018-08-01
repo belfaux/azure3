@@ -49,7 +49,7 @@ var cosmosStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, do
 // Create your bot with a function to receive messages from the user
 // Create bot and default message handler
 var bot = new builder.UniversalBot(connector, function (session) {
-   var msg = session.message;
+  /* var msg = session.message;
     if (msg.attachments && msg.attachments.length > 0) {
      // Echo back attachment
  //    session.userdata.img= msg;
@@ -68,6 +68,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
         // Echo back users text
         session.send("You said: %s", session.message.text);
     }
+    */
 }).set('storage', cosmosStorage);
 
 
