@@ -548,16 +548,7 @@ bot.dialog('photos', [
     },
     function (session, results) {
         session.userData.image = results.response;
-          session.send({
-            text: "You sent:",
-            attachments: [
-                {
-                    contentType: attachment.contentType,
-                    contentUrl: attachment.contentUrl,
-                    name: attachment.name
-                }
-            ]
-        });
+         session.send("Thank you, we got your submission.");
       //  builder.Prompts.text(session, "Hi " + results.response); 
     }
 ]).triggerAction({ matches: /^photos/i });
