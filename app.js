@@ -117,7 +117,7 @@ bot.dialog('menu', function (session) {
                     builder.CardAction.imBack(session, "card", "Test Cards"),
                     builder.CardAction.imBack(session, "Show VISA", "Check Visa"),
                     builder.CardAction.imBack(session, "Show MasterCard", "Check MasterCard"),
-                    builder.CardAction.imBack(session, "input", "Test Input"),
+                    builder.CardAction.imBack(session, "input", "Apply For a Card"),
                     builder.CardAction.imBack(session, "testprompts", "Test Prompts")
                 ]
             ));
@@ -536,19 +536,29 @@ bot.dialog('inputtest', [
                        session.userData.address + ", and mobile number "
                    + session.userData.mobile + 
                     ".");
-      session.send("Thank u. Type 'photos' or 'start' to go back.");
+      session.send("Thank you! If this is correct, type 'photos' to proceed. Otherwise, type in 'input'.");
     }
 ]).triggerAction({ matches: /^input/i });
 
 bot.dialog('photos', [
     function (session) {
         //builder.Prompts.text(session, "Hi! In order to process your application we need to get your info. First what is your first name?");
-      builder.Prompts.attachment(session, "Upload a picture.");
+      builder.Prompts.attachment(session, "Upload a selfie.");
 
     },
     function (session, results) {
-        session.userData.image = results.response;
-         session.send("Thank you, we got your submission.");
+        session.userData.selfie = results.response;
+      builder.Prompts.attachment(session, "Upload an ID photo.");
       //  builder.Prompts.text(session, "Hi " + results.response); 
+    },
+   function (session, results) {
+        session.userData.idphoto = results.response;
+      builder.Prompts.attachment(session, "Upload ITR.");
+      //  builder.Prompts.text(session, "Hi " + results.response); 
+    },
+   function (session, results) {
+        session.userData.ITR = results.response;
+    
+      builder.Prompts.text(session, "Thanks " + session.userData.first); 
     }
 ]).triggerAction({ matches: /^photos/i });
