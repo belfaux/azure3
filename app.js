@@ -76,7 +76,7 @@ bot.on('conversationUpdate', function (message) {
             if (identity.id === message.address.bot.id) {
                 bot.send(new builder.Message()
                     .address(message.address)
-                    .text("Hello!  Type 'start' to begin."));
+                    .text("Hello,"+session.userData.first+"Type 'start' to begin."));
             }
         });
     }
@@ -543,7 +543,7 @@ bot.dialog('inputtest', [
 bot.dialog('photos', [
     function (session) {
         //builder.Prompts.text(session, "Hi! In order to process your application we need to get your info. First what is your first name?");
-      builder.Prompts.attachment(session, "Upload a picture for me to transform.");
+      builder.Prompts.attachment(session, "Upload a picture.");
 
     },
     function (session, results) {
