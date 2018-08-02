@@ -76,7 +76,7 @@ bot.on('conversationUpdate', function (message) {
             if (identity.id === message.address.bot.id) {
                 bot.send(new builder.Message()
                     .address(message.address)
-                    .text("Hello,"+session.userData.first+"Type 'start' to begin."));
+                    .text("Hello! Type 'start' to begin."));
             }
         });
     }
