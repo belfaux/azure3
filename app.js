@@ -532,10 +532,26 @@ bot.dialog('inputtest', [
     },
     function (session, results) {
         session.userData.mobile = results.response;
+        builder.Prompts.text(session, "What is your Employer's Name?"); 
+    },
+    function (session, results) {
+        session.userData.employername = results.response;
+        builder.Prompts.text(session, "What is your Employer's Address?"); 
+    },
+    function (session, results) {
+        session.userData.employeraddress = results.response;
+        builder.Prompts.text(session, "What is your Employer's Contact No?"); 
+    },
+    function (session, results) {
+        session.userData.employernumber = results.response;
+        builder.Prompts.text(session, "When is the best time to call you?"); 
+    },
+    function (session, results) {
+        session.userData.timetocall = results.response;
         session.send("Here are the details you have submitted:  " + session.userData.first + " " + session.userData.middle + " " + session.userData.last + ", address at " +
                        session.userData.address + ", and mobile number "
-                   + session.userData.mobile + 
-                    ".");
+                   + session.userData.mobile + "Employer Details: " + session.userData.employername + ", " +session.userData.employername+ ", " + session.userData.employernumber + ". Best time to call: "+ session.userData.timetocall +  
+                     ".");
       session.send("Thank you! If this is correct, type 'photos' to proceed. Otherwise, type in 'input'.");
     }
 ]).triggerAction({ matches: /^input/i });
