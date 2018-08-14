@@ -521,42 +521,53 @@ bot.dialog('inputtest', [
         builder.Prompts.text(session, "Hi " + results.response + ". What is your middle name?"); 
     },
     function (session, results) {
+      session.sendTyping();
         session.userData.middle = results.response;
         builder.Prompts.text(session, "What is your Last Name (include Jr if you are) ?"); 
     },
      function (session, results) {
+       session.sendTyping();
         session.userData.last = results.response;
         builder.Prompts.text(session, "What is your Date of Birth (MM/DD/YYYY) ?"); 
     },
     function (session, results) {
+      session.sendTyping();
         session.userData.birthday = results.response;
         builder.Prompts.text(session, "What is your mobile number?"); 
     },
     function (session, results) {
+      session.sendTyping();
         session.userData.mobile = results.response;
         builder.Prompts.text(session, "What is your employer's name ? (If you are self-employed, please indicate self-employed after your business name)"); 
     },
     function (session, results) {
+      session.sendTyping();
         session.userData.employername = results.response;
         builder.Prompts.text(session, "What is your employment address?"); 
     },
     function (session, results) {
+      session.sendTyping();
         session.userData.employeraddress = results.response;
         builder.Prompts.text(session, "What is your Employer's Contact No?"); 
     },
     function (session, results) {
+      session.sendTyping();
         session.userData.employernumber = results.response;
         builder.Prompts.text(session, "What is your job title?"); 
     },
     function (session, results) {
+      session.sendTyping();
         session.userData.jobtitle = results.response;
         builder.Prompts.text(session, "When is the best time to call you?"); 
     },
     function (session, results) {
+        session.sendTyping();
         session.userData.timetocall = results.response;
         session.send("Here are the details you have submitted:  " + session.userData.first + " " + session.userData.middle + " " + session.userData.last + ", birthday on " +
                        session.userData.birthday + ", and mobile number "
-                   + session.userData.mobile + ". Employer Details: " + session.userData.employername + ", " +session.userData.employeraddress+ ", " + session.userData.employernumber + ", "+session.userData.jobtitle+". Best time to call: "+ session.userData.timetocall +  
+                   + session.userData.mobile + "." );
+        session.sendTyping();  
+        session.send("Employer Details: " + session.userData.employername + ", " +session.userData.employeraddress+ ", " + session.userData.employernumber + ", "+session.userData.jobtitle+". Best time to call: "+ session.userData.timetocall +  
                      ".");
       session.send("Thank you! If this is correct, type 'photos' to proceed. Otherwise, type in 'input'.");
     }
@@ -566,23 +577,28 @@ bot.dialog('photos', [
     function (session) {
         //builder.Prompts.text(session, "Hi! In order to process your application we need to get your info. First what is your first name?");
       builder.Prompts.attachment(session, "Please upload a selfie and send");
+      session.sendTyping();
 
     },
     function (session, results) {
         session.userData.selfie = results.response;
       builder.Prompts.attachment(session, "Please take a picture of any Valid Government ID (Driver's License, SSS, TIN, Passport) and send");
       //  builder.Prompts.text(session, "Hi " + results.response); 
+      session.sendTyping();
     },
    function (session, results) {
         session.userData.idphoto = results.response;
       builder.Prompts.attachment(session, "Please take a picture of your latest payslip or ITR and send. If you have a valid locally issued principal credit card (except BDO), you can submit the card # as a substitute.");
-      //  builder.Prompts.text(session, "Hi " + results.response); 
+      //  builder.Prompts.text(session, "Hi " + results.response);
+     session.sendTyping();
     },
    function (session, results) {
         session.userData.ITR = results.response;
-    
+    session.sendTyping();
       session.send("Thanks " + session.userData.first + ", we have collected the minimum information required to evaluate your application. If you are approved, we will collect additional information as required by government regulations."); 
-      session.send("We will advise you of the disposition of your application within the next 7 days.");
-      session.send("To check the card variants, type in 'card'.");
+     session.sendTyping(); 
+     session.send("We will advise you of the disposition of your application within the next 7 days.");
+     session.sendTyping(); 
+     session.send("To check the card variants, type in 'card'.");
    }
 ]).triggerAction({ matches: /^photos/i });
