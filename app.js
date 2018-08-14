@@ -512,7 +512,7 @@ bot.dialog('CancelDialog', function (session) {
 
 bot.dialog('inputtest', [
     function (session) {
-        builder.Prompts.text(session, "Hi! In order to process your application we need to get your info. First what is your first name?");
+        builder.Prompts.text(session, "Hi! In order to process your application we just have to ask you for your personal and employment information; and pictures of your valid ID, payslip and a selfie! We promise; it won't take long. First, what is your first name (as indicated in your Valid ID)?");
     },
     function (session, results) {
         session.userData.first = results.response;
@@ -520,23 +520,23 @@ bot.dialog('inputtest', [
     },
     function (session, results) {
         session.userData.middle = results.response;
-        builder.Prompts.text(session, "What is your last name?"); 
+        builder.Prompts.text(session, "What is your Last Name (include Jr if you are) ?"); 
     },
      function (session, results) {
         session.userData.last = results.response;
-        builder.Prompts.text(session, "What is your address?"); 
+        builder.Prompts.text(session, "What is your Date of Birth (MM/DD/YYYY) ?"); 
     },
     function (session, results) {
-        session.userData.address = results.response;
+        session.userData.birthday = results.response;
         builder.Prompts.text(session, "What is your mobile number?"); 
     },
     function (session, results) {
         session.userData.mobile = results.response;
-        builder.Prompts.text(session, "What is your Employer's Name?"); 
+        builder.Prompts.text(session, "What is your employer's name ? (If you are self-employed, please indicate self-employed after your business name)"); 
     },
     function (session, results) {
         session.userData.employername = results.response;
-        builder.Prompts.text(session, "What is your Employer's Address?"); 
+        builder.Prompts.text(session, "What is your employment address?"); 
     },
     function (session, results) {
         session.userData.employeraddress = results.response;
@@ -544,13 +544,17 @@ bot.dialog('inputtest', [
     },
     function (session, results) {
         session.userData.employernumber = results.response;
+        builder.Prompts.text(session, "What is your job title?"); 
+    },
+    function (session, results) {
+        session.userData.jobtitle = results.response;
         builder.Prompts.text(session, "When is the best time to call you?"); 
     },
     function (session, results) {
         session.userData.timetocall = results.response;
-        session.send("Here are the details you have submitted:  " + session.userData.first + " " + session.userData.middle + " " + session.userData.last + ", address at " +
-                       session.userData.address + ", and mobile number "
-                   + session.userData.mobile + "Employer Details: " + session.userData.employername + ", " +session.userData.employername+ ", " + session.userData.employernumber + ". Best time to call: "+ session.userData.timetocall +  
+        session.send("Here are the details you have submitted:  " + session.userData.first + " " + session.userData.middle + " " + session.userData.last + ", birthday on " +
+                       session.userData.birthday + ", and mobile number "
+                   + session.userData.mobile + "Employer Details: " + session.userData.employername + ", " +session.userData.employername+ ", " + session.userData.employernumber + ","+session.userData.jobtitle+". Best time to call: "+ session.userData.timetocall +  
                      ".");
       session.send("Thank you! If this is correct, type 'photos' to proceed. Otherwise, type in 'input'.");
     }
@@ -559,17 +563,17 @@ bot.dialog('inputtest', [
 bot.dialog('photos', [
     function (session) {
         //builder.Prompts.text(session, "Hi! In order to process your application we need to get your info. First what is your first name?");
-      builder.Prompts.attachment(session, "Upload a selfie.");
+      builder.Prompts.attachment(session, "Please upload a selfie and send");
 
     },
     function (session, results) {
         session.userData.selfie = results.response;
-      builder.Prompts.attachment(session, "Upload an ID photo.");
+      builder.Prompts.attachment(session, "Please take a picture of any Valid Government ID (Driver's License, SSS, TIN, Passport) and send");
       //  builder.Prompts.text(session, "Hi " + results.response); 
     },
    function (session, results) {
         session.userData.idphoto = results.response;
-      builder.Prompts.attachment(session, "Upload ITR.");
+      builder.Prompts.attachment(session, "Please take a picture of your latest payslip or ITR and send. If you have a valid locally issued principal credit card (except BDO), you can submit the card # as a substitute.");
       //  builder.Prompts.text(session, "Hi " + results.response); 
     },
    function (session, results) {
