@@ -512,10 +512,12 @@ bot.dialog('CancelDialog', function (session) {
 
 bot.dialog('inputtest', [
     function (session) {
+        session.sendTyping();
         builder.Prompts.text(session, "Hi! In order to process your application we just have to ask you for your personal and employment information; and pictures of your valid ID, payslip and a selfie! We promise; it won't take long. First, what is your first name (as indicated in your Valid ID)?");
     },
     function (session, results) {
         session.userData.first = results.response;
+      session.sendTyping();
         builder.Prompts.text(session, "Hi " + results.response + ". What is your middle name?"); 
     },
     function (session, results) {
@@ -581,6 +583,6 @@ bot.dialog('photos', [
     
       session.send("Thanks " + session.userData.first + ", we have collected the minimum information required to evaluate your application. If you are approved, we will collect additional information as required by government regulations."); 
       session.send("We will advise you of the disposition of your application within the next 7 days.");
-       session.send("To check the card variants, type in 'card'.");
+      session.send("To check the card variants, type in 'card'.");
    }
 ]).triggerAction({ matches: /^photos/i });
