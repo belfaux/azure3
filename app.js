@@ -581,6 +581,6 @@ bot.dialog('photos', [
     
       session.send("Thanks " + session.userData.first + ", we have collected the minimum information required to evaluate your application. If you are approved, we will collect additional information as required by government regulations."); 
       session.send("We will advise you of the disposition of your application within the next 7 days.");
-       session.send("To check the card variants, type in 'cards'.");
+       session.send("To check the card variants, type in 'card'.");
    }
 ]).triggerAction({ matches: /^photos/i });
