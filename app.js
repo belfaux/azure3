@@ -554,7 +554,7 @@ bot.dialog('inputtest', [
         session.userData.timetocall = results.response;
         session.send("Here are the details you have submitted:  " + session.userData.first + " " + session.userData.middle + " " + session.userData.last + ", birthday on " +
                        session.userData.birthday + ", and mobile number "
-                   + session.userData.mobile + "Employer Details: " + session.userData.employername + ", " +session.userData.employername+ ", " + session.userData.employernumber + ","+session.userData.jobtitle+". Best time to call: "+ session.userData.timetocall +  
+                   + session.userData.mobile + ". Employer Details: " + session.userData.employername + ", " +session.userData.employeraddress+ ", " + session.userData.employernumber + ", "+session.userData.jobtitle+". Best time to call: "+ session.userData.timetocall +  
                      ".");
       session.send("Thank you! If this is correct, type 'photos' to proceed. Otherwise, type in 'input'.");
     }
@@ -579,6 +579,8 @@ bot.dialog('photos', [
    function (session, results) {
         session.userData.ITR = results.response;
     
-      builder.Prompts.text(session, "Thanks " + session.userData.first); 
-    }
+      session.send("Thanks " + session.userData.first + ", we have collected the minimum information required to evaluate your application. If you are approved, we will collect additional information as required by government regulations."); 
+      session.send("We will advise you of the disposition of your application within the next 7 days.");
+       session.send("To check the card variants, type in 'cards'.");
+   }
 ]).triggerAction({ matches: /^photos/i });
